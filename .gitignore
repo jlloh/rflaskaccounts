@@ -1,0 +1,3 @@
+*.pyc
+instance/config.py
+rflaskaccounts/bower_components/*

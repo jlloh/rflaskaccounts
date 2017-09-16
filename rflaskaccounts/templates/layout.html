@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+  <title>RFlask Accounts</title>
+  <meta charset="utf-8">
+  <meta http-equiv='cache-control' content='no-cache'>
+
+  <link rel="stylesheet" href="{{url_for('bower.static',filename='bootstrap/dist/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('bower.static',filename='bootstrap/dist/css/bootstrap-theme.min.css')}}">
+
+  <script src="{{url_for('bower.static',filename='jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{url_for('bower.static',filename='bootstrap/dist/js/bootstrap.min.js')}}"></script>
+
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <meta name="google-signin-client_id" content="{{google_app_id}}">
+<body>
+  {% include 'header.html' %}
+
+  <div class="container">
+
+    {% block body %}
+    {% endblock %}
+  </div>
+
+
+
+</body>
+<footer>
+{%if username%}
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+{%endif%}
+</footer>

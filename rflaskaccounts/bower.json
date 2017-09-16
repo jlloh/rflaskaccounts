@@ -1,0 +1,20 @@
+{
+  "name": "rflaskaccounts",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "react": "^15.6.1",
+    "babel": "^5.8.38"
+  }
+}
