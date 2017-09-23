@@ -12,4 +12,4 @@ CREATE TABLE `webapp.users` (
 
 GRANT SELECT on webapp.users to webapp;
 
-INSERT INTO webapp.users (email, roles) values ('jlloh89@gmail.com', 'admin');
+INSERT INTO webapp.users (email, roles) values ('test@gmail.com', 'admin');
