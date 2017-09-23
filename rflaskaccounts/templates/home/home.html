@@ -1,8 +1,39 @@
 {% extends "layout.html" %}
 {% block body %}
 
-  <div class="jumbotron">
-    <h3>Welcome to This website</h3>
-  </div>
+<div id = "body">
+</div>
+
+<script type="text/babel">
+function Jumbotron(props) {
+  return (
+    <div className="jumbotron">
+      <h3>Welcome to This website</h3>
+    </div>
+  )
+}
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+                 };
+  }
+  componentDidMount() {
+  }
+  render() {
+    return(
+      <Jumbotron/>
+    )
+  }
+}
+
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('body')
+)
+
+</script>
 
 {% endblock %}
