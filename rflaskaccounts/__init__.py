@@ -5,8 +5,10 @@ from flask_bower import Bower
 
 from .views.user_control import user_control
 from .views.home import home
+from .views.summary import summary
 
 from .controllers.user_control_api import user_control_api
+from .controllers.accounts_api import accounts_api
 from .controllers.model import User
 
 app = Flask(__name__, instance_relative_config = True)
@@ -16,8 +18,10 @@ app.config.from_pyfile('config.py')
 #Register Blueprints
 app.register_blueprint(home)
 app.register_blueprint(user_control)
+app.register_blueprint(summary)
 
 app.register_blueprint(user_control_api)
+app.register_blueprint(accounts_api)
 
 #Flask-login
 login_manager = LoginManager()

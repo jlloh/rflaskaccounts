@@ -15,6 +15,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "react": "^15.6.1",
-    "babel-standalone": "^6.19.0"
+    "babel-standalone": "^6.19.0",
+    "reactable": "^0.14.1"
   }
 }
