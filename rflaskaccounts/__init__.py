@@ -6,6 +6,7 @@ from flask_bower import Bower
 from .views.user_control import user_control
 from .views.home import home
 from .views.summary import summary
+from .views.transactions import transactions
 
 from .controllers.user_control_api import user_control_api
 from .controllers.accounts_api import accounts_api
@@ -19,6 +20,7 @@ app.config.from_pyfile('config.py')
 app.register_blueprint(home)
 app.register_blueprint(user_control)
 app.register_blueprint(summary)
+app.register_blueprint(transactions)
 
 app.register_blueprint(user_control_api)
 app.register_blueprint(accounts_api)

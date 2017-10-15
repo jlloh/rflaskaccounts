@@ -3,7 +3,6 @@ from flask_login import login_required
 
 home = Blueprint('home', __name__)
 
-@home.route('/')
 @home.route('/home')
 @login_required
 def homepage():
