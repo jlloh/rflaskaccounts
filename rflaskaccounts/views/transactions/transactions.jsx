@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Reactable from 'reactable';
 import FormElement from '../jsx_components/FormElement';
 import DataTable from '../jsx_components/DataTable';
+import Jumbotron from '../jsx_components/Jumbotron';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
 
 function EditButton(props) {
   const buttonType = "btn btn-primary";
@@ -24,13 +28,6 @@ function EditButton(props) {
          </div>
 }
 
-function Jumbotron(props) {
-  return (
-    <div className="jumbotron">
-      <h3>Transaction History</h3>
-    </div>
-  )
-}
 
 
 class App extends React.Component {
@@ -146,8 +143,8 @@ class App extends React.Component {
   }
   render() {
     return(
-      <div>
-      <Jumbotron/>
+      <div className="container">
+      <Jumbotron text="transactions"/>
       <FormElement displayed={this.state.editMode} 
                    DateChanged={this.DateChanged}
                    date={this.date}

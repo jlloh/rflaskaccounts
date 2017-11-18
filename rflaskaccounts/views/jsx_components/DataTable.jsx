@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Reactable from 'reactable';
+
 
 function DataTable(props) {
   //pass json object into function? headers, rows
