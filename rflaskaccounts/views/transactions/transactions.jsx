@@ -153,19 +153,8 @@ class App extends React.Component {
   }
   LogOut(event) {
     var auth2 = gapi.auth2.getAuthInstance();
-    var url = "/logout";
-    console.log(event);
-    fetch(url, {
-      method: "GET",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Cache': 'no-cache'
-      },
-      credentials: 'include'
-      })
-      .then(auth2.signOut())
-      .then(window.location.href = '/home')
+    auth2.signOut();
+    window.location.href = '/logout';
   }
   render() {
     var logoutOption = [{text: "LogOut", link: "#", function: this.LogOut}]
