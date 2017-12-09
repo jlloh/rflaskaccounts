@@ -4,6 +4,8 @@ import Reactable from 'reactable';
 import FormElement from '../jsx_components/FormElement';
 import DataTable from '../jsx_components/DataTable';
 import Jumbotron from '../jsx_components/Jumbotron';
+import NavBarHeader from '../jsx_components/NavBarHeader';
+import NavBarItems from '../jsx_components/NavBarItems';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -28,8 +30,6 @@ function EditButton(props) {
          </div>
 }
 
-
-
 class App extends React.Component {
   constructor() {
     super();
@@ -40,12 +40,22 @@ class App extends React.Component {
                 , amount: ''
                 , options: []
                 , description: ''
+                , navbaroptions: [
+                  {text: 'Transactions' , link: '/transactions', function: null}
+                , {text: 'Summary', link: '/summary', function: null}
+                 ]
                  };
     this.ShowEdit = this.ShowEdit.bind(this);
     this.FieldChanged = this.FieldChanged.bind(this);
     this.AddTransaction = this.AddTransaction.bind(this);
+    this.LogOut = this.LogOut.bind(this);
   }
   componentDidMount() {
+    gapi.load("auth2", {
+      callback: function() {
+        gapi.auth2.init()
+      }
+    })
     var url = "/api/transactions"
     fetch(url, {
       method: "GET",
@@ -141,28 +151,58 @@ class App extends React.Component {
       this.setState({description: event.target.value})
     }
   }
+  LogOut(event) {
+    var auth2 = gapi.auth2.getAuthInstance();
+    var url = "/logout";
+    console.log(event);
+    fetch(url, {
+      method: "GET",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Cache': 'no-cache'
+      },
+      credentials: 'include'
+      })
+      .then(auth2.signOut())
+      .then(window.location.href = '/home')
+  }
   render() {
+    var logoutOption = [{text: "LogOut", link: "#", function: this.LogOut}]
     return(
-      <div className="container">
-      <Jumbotron text="transactions"/>
-      <FormElement displayed={this.state.editMode} 
-                   DateChanged={this.DateChanged}
-                   date={this.date}
-                   options={this.state.options}
-                   AccountChanged={this.AccountChanged}
-                   FieldChanged={this.FieldChanged}
-                   account={this.state.account}
-                   amount={this.state.amount}
-                   description={this.state.description}
-      />
-      <EditButton Name="Add Transaction" 
-                  onClick={this.ShowEdit}
-                  onClick2={this.AddTransaction}
-                  date={this.state.date}
-                  amount={this.state.amount}
-                  description={this.state.description}
-      />
-      <DataTable data={this.state.transaction_data} displayed={true}/>
+      <div>
+        <nav className="navbar navbar-inverse">
+          <div className="container-fluid">
+            <NavBarHeader link="/home" text="RFlaskAccounts"/>
+            <NavBarItems inputArray={this.state.navbaroptions}
+                         orientation="normal"
+            />
+            <NavBarItems inputArray={logoutOption}
+                         orientation="right"
+            />
+         </div>
+        </nav>
+        <div className="container">
+          <Jumbotron text="transactions"/>
+          <FormElement displayed={this.state.editMode} 
+                       DateChanged={this.DateChanged}
+                       date={this.date}
+                       options={this.state.options}
+                       AccountChanged={this.AccountChanged}
+                       FieldChanged={this.FieldChanged}
+                       account={this.state.account}
+                       amount={this.state.amount}
+                       description={this.state.description}
+          />
+          <EditButton Name="Add Transaction" 
+                      onClick={this.ShowEdit}
+                      onClick2={this.AddTransaction}
+                      date={this.state.date}
+                      amount={this.state.amount}
+                      description={this.state.description}
+          />
+          <DataTable data={this.state.transaction_data} displayed={true}/>
+        </div>
       </div>
     )
   }

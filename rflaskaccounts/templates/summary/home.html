@@ -1,9 +1,4 @@
 {% extends "layout_simple.html" %}
 {% block body %}
-
-<div id = "body">
-</div>
-
-<script src="{{url_for('static', filename = 'compiled/summary.js')}}"></script>
-
+<script src="{{url_for('static', filename = 'compiled/summary.js')}}" defer></script>
 {% endblock %}
