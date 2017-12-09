@@ -1,21 +1,20 @@
-<!DOCTYPE html>
 <head>
 <title>RFlask Accounts</title>
 <meta charset="utf-8">
 <meta http-equiv='cache-control' content='no-cache'>
+        
+<meta name="google-signin-client_id" content="521745837975-0ojttdeqkq7udbg1jc2kohrmoesdtkfp.apps.googleusercontent.com">
 
-<meta name="google-signin-client_id" content="{{google_app_id}}">
+<script src="https://apis.google.com/js/platform.js" defer></script>
+
+</head>
 
 <body>
-{% include 'header.html' %}
+
+<div id = "body">
+</div>
 
 {% block body %}
 {% endblock %}
 
 </body>
-
-<footer>
-{%if username%}
-<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
-{%endif%}
-</footer>

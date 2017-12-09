@@ -1,20 +1,4 @@
-<head>
-<title>RFlask Accounts</title>
-<meta charset="utf-8">
-<meta http-equiv='cache-control' content='no-cache'>
-        
-<meta name="google-signin-client_id" content="521745837975-0ojttdeqkq7udbg1jc2kohrmoesdtkfp.apps.googleusercontent.com">
-
-<script src="https://apis.google.com/js/platform.js" defer></script>
-
-<body>
-
-<div id = "body">
-</div>
-
+{% extends "layout_simple.html" %}
+{% block body %}
 <script src="{{url_for('static', filename = 'compiled/summary.js')}}" defer></script>
-
-</body>
-
-<footer>
-</footer>
+{% endblock %}
